@@ -32,17 +32,17 @@ public class MembersController {
         return members;
     }
 
-    @GetMapping(value = "member")
-    public MemberResp memberInfo(Members members){
-        System.out.println("Member retrieved");
-        try {
-            MemberResp memberResp = new MemberResp(membersService.findById(members.getId()));
-            return memberResp;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-
-
+@GetMapping(value = "/member/{id}")
+public MemberResp memberInfo(@PathVariable int id){
+    System.out.println("Member retrieved");
+    try {
+        MemberResp memberResp = new MemberResp(membersService.findById(id));
+        return memberResp;
+    } catch (Exception e) {
+        throw new RuntimeException(e);
     }
+
+
+
+}
 }
